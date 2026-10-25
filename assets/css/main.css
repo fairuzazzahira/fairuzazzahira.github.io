@@ -1,16 +1,3 @@
-/**
-* Template Name: iPortfolio
-* Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
---------------------------------------------------------------*/
-/* Fonts */
 :root {
   --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Raleway",  sans-serif;
@@ -1142,67 +1129,6 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Portfolio Details Section
---------------------------------------------------------------*/
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
-  opacity: 1;
-}
-
-.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--accent-color);
-}
-
-.portfolio-details .portfolio-info {
-  padding: 30px;
-  box-shadow: 0px 0 30px rgba(0, 0, 0, 0.1);
-}
-
-.portfolio-details .portfolio-info h3 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-}
-
-.portfolio-details .portfolio-info ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.portfolio-details .portfolio-info ul li+li {
-  margin-top: 10px;
-}
-
-.portfolio-details .portfolio-description {
-  padding-top: 30px;
-}
-
-.portfolio-details .portfolio-description h2 {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.portfolio-details .portfolio-description p {
-  padding: 0;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
-
-/*--------------------------------------------------------------
 # Service Details Section
 --------------------------------------------------------------*/
 .service-details .services-list {
@@ -1362,3 +1288,134 @@ section,
     height: 250px;
   }
 }
+/* =========================================
+   PROJECT CARDS & GRID SYSTEM (RAPI & MODERN)
+   ========================================= */
+
+/* Fallback Variabel jika tidak ada di template utama */
+:root {
+  --card: #ffffff;
+  --line: #e2e8f0;
+  --muted: #64748b;
+  --radius: 12px;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --primary: #149ddd; /* Biru khas iPortfolio */
+}
+
+/* Grid Layout (Responsive otomatis) */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+}
+
+/* Kartu Proyek */
+.pcard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* Efek Hover pada Kartu */
+.pcard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: #cbd5e1;
+}
+
+/* Area Gambar */
+.pcard .ph {
+  aspect-ratio: 16/10;
+  position: relative;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid var(--line);
+}
+
+.pcard .ph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.4s ease;
+}
+
+/* Zoom gambar saat di-hover */
+.pcard:hover .ph img {
+  transform: scale(1.06);
+}
+
+/* Body Kartu (Teks) */
+.pcard .pb {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Agar tinggi kartu rata */
+}
+
+/* Judul Proyek */
+.pcard h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: #1e293b;
+}
+
+/* Deskripsi & Meta (Tahun, Kategori) */
+.pcard .pd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto; /* Mendorong ke bawah */
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Tombol/Link Teks (Detail) */
+.pcard .go {
+  font-weight: 700;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+
+/* Animasi Panah saat di-hover */
+.pcard:hover .go {
+  gap: 8px; /* Panah bergeser sedikit ke kanan */
+}
+
+/* Badge Kategori */
+.pcard .badge {
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 50rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Warna Badge (Opsional, sesuaikan dengan tema) */
+.badge-soft-primary { background: rgba(20, 157, 221, 0.1); color: #149ddd; }
+.badge-soft-success { background: rgba(25, 135, 84, 0.1); color: #198754; }
+.badge-soft-secondary { background: rgba(108, 117, 125, 0.1); color: #6c757d; }
